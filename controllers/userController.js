@@ -40,7 +40,16 @@ module.exports = {
   //update a user
   async updateUser(req, res) {
     try {
-      const result = await User.findByIdAndUpdate({ _id: req.params.userId});
+      const updatedUserData = req.body;
+      const result = await User.findByIdAndUpdate(req.params.userId, updatedUserData, {
+        new: true, // Return the updated document
+    });
+
+    if (!result) {
+      // If the user with the provided ID was not found, return a 404 response
+      return res.status(404).json({ message: 'User not found' });
+    }
+      
       res.json(result);
       console.log(`updated= ${result}`)
     } catch (err) {
@@ -62,7 +71,7 @@ module.exports = {
         try {
           const user = await User.findOneAndUpdate(
             { _id: req.params.userId },
-            { $addToSet: { friends: req.body } },
+            { $addToSet: { friends: { friendId: req.params.userId } } },
             { runValidators: true, new: true }
           );
     
@@ -80,7 +89,7 @@ module.exports = {
         try {
           const user = await User.findOneAndRemove(
             { _id: req.params.userId },
-            { $pull: { friendss: { friendId: req.params.friendId } } },
+            { $pull: { friends: { friendId: req.params.userId } } },
             { runValidators: true, new: true }
           )
     
