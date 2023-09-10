@@ -19,6 +19,7 @@ THEN user is able to successfully create and delete reactions to thoughts and ad
 - Tutor Philip Loy
 
   ## Screenshots
+  ![]()
   ## Links
   Walkthrough video- https://drive.google.com/file/d/1oib9bxIwzgr8htdsI63Vum-WaLWu4wA7/view
   Repository link - https://github.com/MK0999/Social-site
