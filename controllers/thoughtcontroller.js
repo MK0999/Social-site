@@ -71,20 +71,14 @@ module.exports = {
         try {
           const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
     
-          if (!thought) {
-            return res.status(404).json({ message: 'No thought with this id!' });
-          }
+         
     const user = await User.findOneAndUpdate(
             { username: req.body.username },
             { $pull: { thoughts: req.params.thoughtId } },
             { new: true }
           );
     
-          if (!user) {
-            return res
-              .status(404)
-              .json({ message: 'thought created but no user with this id!' });
-          }
+         
          res.json({ message: 'thought successfully deleted!' });
         } catch (err) {
           res.status(500).json(err);
@@ -113,7 +107,7 @@ module.exports = {
         try {
           const thought = await Thought.findOneAndRemove(
             { _id: req.params.thoughtId },
-            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { $pull: { reactionId: req.params.reactionId }  },
             { runValidators: true, new: true }
           )
     
