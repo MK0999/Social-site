@@ -19,7 +19,7 @@ THEN user is able to successfully create and delete reactions to thoughts and ad
 - Tutor Philip Loy
 
   ## Screenshots
-  ![]()
+  ![GET all thoughts](https://github.com/MK0999/Social-site/blob/main/images/Screenshot%20(81).png)
   ## Links
   Walkthrough video- https://drive.google.com/file/d/1oib9bxIwzgr8htdsI63Vum-WaLWu4wA7/view
   Repository link - https://github.com/MK0999/Social-site
